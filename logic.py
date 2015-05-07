@@ -2,6 +2,7 @@ import sqlite3
 import sys
 import time
 
+
 def helpp():
     print("""
 You can use the following magic commands for our magic cinema:
@@ -13,6 +14,7 @@ help
 exit
 abracadabra
 """)
+
 
 def abracadabra():
     print("YOUR COMPUTER IS GOING TO EXPLODE IN 3 SECONDS !!! RUN FOR YOUR LIFE !!!")
@@ -27,3 +29,7 @@ def show_movies():
     result = cursor.execute("SELECT name FROM movies ORDER BY rating")
     for row in result:
         print(row)
+
+
+def show_movie_projections():
+    pass
