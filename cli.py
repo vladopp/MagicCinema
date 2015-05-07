@@ -11,7 +11,7 @@ while True:
         if len(command) == 2:
             logic.show_movie_projections(int(command[1]))
         elif len(command) == 3:
-            logic.show_movie_projections(int(command[1]), date=int(command[2]))
+            logic.show_movie_projections(int(command[1]), date=command[2])
 
     elif command[0] == "make_reservation":
         logic.make_reservation()
@@ -26,4 +26,9 @@ while True:
         logic.abracadabra()
 
     elif command[0] == "exit":
+        logic.close_connection()
         break
+
+# bacause Users are strange people :D (even if they use CMD to order tickets)
+    else:
+        logic.helpp()
