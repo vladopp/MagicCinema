@@ -24,11 +24,17 @@ def abracadabra():
 
 
 def show_movies():
+    print("Current movies:")
     conn = sqlite3.connect("Movies.db")
     cursor = conn.cursor()
-    result = cursor.execute("SELECT name FROM movies ORDER BY rating")
+    result = cursor.execute("SELECT name FROM Movies ORDER BY rating")
     for row in result:
         print(row)
+
+def cancel_reservation(name):
+    conn = sqlite3.connect("Movies.db")
+    cursor = conn.cursor()
+    result = cursor.execute("DELETE FROM Reservations WHERE username = name")
 
 
 def show_movie_projections():
