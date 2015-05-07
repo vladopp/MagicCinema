@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS Projections(
     proj_id INTEGER PRIMARY KEY,
     movie_id INTEGER,
     type TEXT,
-    date INTEGER,
-    time INTEGER,
+    date TEXT,
+    time TEXT,
     FOREIGN KEY(movie_id) REFERENCES Movies(id)
 )
 """
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Projections(
 CREATE_RESERVATION_TABLE = """
 CREATE TABLE IF NOT EXISTS Reservations(
     reservation_id INTEGER PRIMARY KEY,
-    username TEXT UNIQUE,
+    username TEXT,
     projection_id INTEGER,
     row INTEGER,
     col INTEGER,
