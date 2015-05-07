@@ -1,25 +1,4 @@
 import logic
-import sys
-import time
-
-def helpp():
-    print("""
-You can use the following magic commands for our magic cinema:
-show_movies
-show_movie_projection
-make_reservation
-cancel_reservation
-delete_employee
-help
-exit
-abracadabra
-""")
-
-def abracadabra():
-    print("YOUR COMPUTER IS GOING TO EXPLODE IN 3 SECONDS !!! RUN FOR YOUR LIFE !!!")
-    time.sleep(3)
-    print("BOOOOOOOM")
-    sys.exit()
 
 while True:
     command = input("command>")
@@ -31,11 +10,9 @@ while True:
         logic.make_reservation()
     elif command == "cancel_reservation":
         logic.cancel_reservation()
-    elif command == "delete_employee":
-        logic.delete_employee()
     elif command == "help":
-        helpp()
+        logic.helpp()
     elif command == "abracadabra":
-        abracadabra()
+        logic.abracadabra()
     elif command == "exit":
         break
