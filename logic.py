@@ -58,10 +58,9 @@ def show_movie_projections(movie_id, date=None):
         result = cursor.execute("""
             SELECT proj_id, time, type
             FROM projections
-            WHERE movie_id = {} AND date = {}
+            WHERE movie_id = {} AND date = \'{}\'
             ORDER BY date ASC
         """.format(movie_id, date))
-
     for row in result.fetchall():
         print(row)
 
