@@ -2,18 +2,25 @@ import sqlite3
 board = []
 rows = 10
 
-
-
 for x in range(rows):
     board.append(["."] * rows)
 
-conn = sqlite3.connect("Reservations.db")
-cursor = conn.cursor()
 
+conn = sqlite3.connect("cinema.db")
+cursor = conn.cursor()
+result = cursor.execute("""
+        SELECT row, col
+        FROM Reservations
+        WHERE projection_id = 1
+    """)
+
+for i in result.fetchall():
+    board[i[0]][i[1]] = "X"
 
 def print_board(board):
     for row in board:
         print(" ".join(row))
+
 
 def available_seats():
     number_of_available=0
@@ -22,8 +29,6 @@ def available_seats():
             if j == "." :
                 number_of_available += 1
     return number_of_available
-
-
 
 
 def choose_seat():
@@ -37,7 +42,7 @@ def choose_seat():
         return available_seats()
     else:
         board[seat_row][seat_col] = "X"
-        return True
+        return (seat_row, seat_col)
 
 choose_seat()
 print(available_seats())
