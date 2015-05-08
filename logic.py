@@ -37,8 +37,9 @@ def show_movies():
         print("movie_id: {}".format(row[0]), "movie_name: {}".format(row[1]))
 
 
-def cancel_reservation(name):  # we have to handle the case where the name is not in reservation table
+# we have to handle the case where the name is not in reservation table
     cursor.execute("""
+def cancel_reservation(name):
         DELETE FROM Reservations
         WHERE username = \"{}\"
     """.format(name))
@@ -65,8 +66,25 @@ def show_movie_projections(movie_id, date=None):
         print(row)
 
 
-def make_reservation():
+def choose_projection(projection_id):
     pass
+
+
+# tazi f-iq ne raboti, no nadejdata umira posledna ;)
+def make_reservation():
+    while True:
+        hacker = input("Choose name>")
+        number_of_tickets = input("Choose number of tickets>")
+        show_movies()
+        # sled kato pokaje projekciite trqbva otnovo da se vklu4i > i togava da me pita koq proj iskam
+        chosen_movie_id = input("Choose movie by its 'movie_id'>")
+        show_movie_projections(chosen_movie_id, date=None)
+        choosen_projection = input("Choose projection by its projection_id>")
+        choose_projection(choosen_projection)  # tova 6te go pazim v bazata
+        aviable_seats()
+        choose_seat()  # tova 6te go pazim v bazata
+        print("This is your reservation:\n {}\n Date and Time: {}, type\n {}".format(movie_id, date, time, type, seats))
+        conn.commit()
 
 
 def close_connection():
