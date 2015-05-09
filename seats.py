@@ -5,14 +5,14 @@ rows = 10
 for x in range(rows):
     board.append(["."] * rows)
 
-
+chosen_id = 1
 conn = sqlite3.connect("cinema.db")
 cursor = conn.cursor()
 result = cursor.execute("""
         SELECT row, col
         FROM Reservations
-        WHERE projection_id = 1
-    """)
+        WHERE projection_id = '%s'
+    """ %chosen_id)
 
 for i in result.fetchall():
     board[i[0]][i[1]] = "X"
